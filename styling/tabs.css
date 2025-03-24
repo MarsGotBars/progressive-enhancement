@@ -33,7 +33,7 @@ nav{
     background-color: white;
 }
 
-@supports selector(:not(:not)) {
+@supports selector(:not(a)) {
   article > ul > * {
     display: none;
   }
