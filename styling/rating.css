@@ -1,0 +1,28 @@
+label{
+    display: flex;
+    align-items: center;
+}
+input[type="radio"]{
+    
+}
+@supports selector(::after){
+    input[type="radio"]{
+        height: 1.5rem;
+        aspect-ratio: 1;
+        appearance: none;
+        position: relative;
+    }
+    input[type="radio"]::after{
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url(../assets/star-empty.svg);
+    }
+
+    input[type="radio"]::after:hover{
+        background: url(../assets/star.svg);
+    }
+}

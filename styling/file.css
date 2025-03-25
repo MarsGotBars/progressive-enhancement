@@ -1,0 +1,53 @@
+::-webkit-file-upload-button {
+  display: none;
+}
+
+form {
+  display: block;
+}
+
+label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--purple);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  background-color: var(--blue);
+  transition: 0.3s;
+  width: max-content;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+img{
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+img.loaded{
+    opacity: .5;
+}
+
+label:hover {
+  background-color: var(--blue-50);
+}
+
+input[type="file"] {
+    z-index: 2;
+    background: transparent;
+  height: 100%;
+  width: 100%;
+  padding: 3rem 5rem;
+  color: var(--green);
+}
