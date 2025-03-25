@@ -1,28 +1,50 @@
-label{
+body > * * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@supports selector(::after) and selector(:has(*)) {
+  label {
+    --star-empty: url(../assets/star-empty.svg);
+    --star-filled: url(../assets/star.svg);
     display: flex;
     align-items: center;
-}
-input[type="radio"]{
-    
-}
-@supports selector(::after){
-    input[type="radio"]{
-        height: 1.5rem;
-        aspect-ratio: 1;
-        appearance: none;
-        position: relative;
-    }
-    input[type="radio"]::after{
-        content: "";
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: url(../assets/star-empty.svg);
-    }
+  }
 
-    input[type="radio"]::after:hover{
-        background: url(../assets/star.svg);
-    }
+  label + input[type="radio"] {
+    margin-left: .1rem;
+  }
+
+  input[type="radio"] {
+    height: 2rem;
+    padding: 0 .25rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  input[type="radio"]::after {
+    content: "";
+    background: var(--star-empty) no-repeat center;
+    height: inherit;
+    aspect-ratio: 1;
+    transition: background-image 0.2s ease;
+    z-index: 1;
+  }
+
+  /* Als het element checked, focused of hovered is, dan is de achtergrond van de ster gevuld */
+  input[type="radio"]:is(:checked, :hover, :focus)::after,
+  label:has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]:not(:is(:checked, :hover, :focus) ~ input[type="radio"])::after,
+  label:hover:has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]::after {
+    background: var(--star-filled);
+  }
+
+  /* Als het element checked, focused of hovered is, dan is de achtergrond van de sterren erna leeg */
+  input[type="radio"]:is(:checked, :hover, :focus) ~ input[type="radio"]::after,
+  input[type="radio"]:is(:checked, :hover, :focus) ~ input[type="radio"]::after,
+  label:is(:checked, :hover, :focus):has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]:is(:checked, :hover, :focus) ~ input[type="radio"]::after {
+    background: var(--star-empty);
+  }
 }
