@@ -46,6 +46,12 @@ nav{
   }
 }
 
+@supports selector(:has(a)){
+    article > ul:not(:has(:target)) li#Docenten {
+        display: block;
+    }
+}
+
 
 li:target {
   display: block;
