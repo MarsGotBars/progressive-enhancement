@@ -42,9 +42,7 @@ body > * * {
   }
 
   /* Als het element checked, focused of hovered is, dan is de achtergrond van de sterren erna leeg */
-  input[type="radio"]:is(:checked, :hover, :focus) ~ input[type="radio"]::after,
-  input[type="radio"]:is(:checked, :hover, :focus) ~ input[type="radio"]::after,
-  label:is(:checked, :hover, :focus):has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]:is(:checked, :hover, :focus) ~ input[type="radio"]::after {
+  label:has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]:hover ~ input[type="radio"]::after {
     background: var(--star-empty);
   }
 }
