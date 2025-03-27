@@ -4,20 +4,22 @@ body > * * {
   box-sizing: border-box;
 }
 @supports selector(::after) and selector(:has(*)) {
+  .container {
+    display: flex;
+    gap: 1rem;
+  }
   label {
     --star-empty: url(../assets/star-empty.svg);
     --star-filled: url(../assets/star.svg);
     display: flex;
     align-items: center;
-  }
-
-  label + input[type="radio"] {
-    margin-left: .1rem;
+    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   input[type="radio"] {
     height: 2rem;
-    padding: 0 .25rem;
+    padding: 0 0.25rem;
     aspect-ratio: 1;
     display: grid;
     place-content: center;
@@ -34,15 +36,14 @@ body > * * {
     z-index: 1;
   }
 
-  /* Als het element checked, focused of hovered is, dan is de achtergrond van de ster gevuld */
-  input[type="radio"]:is(:checked, :hover, :focus)::after,
-  label:has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]:not(:is(:checked, :hover, :focus) ~ input[type="radio"])::after,
-  label:hover:has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]::after {
+  /* Fill stars on hover, focus, or check */
+  input[type="radio"]:is(:hover, :focus, :checked)::after,
+  .container:has(input[type="radio"]:is(:hover, :focus, :checked)) label:not(:has(input[type="radio"]:is(:hover, :focus, :checked)) ~ label) input[type="radio"]::after {
     background: var(--star-filled);
   }
-
-  /* Als het element checked, focused of hovered is, dan is de achtergrond van de sterren erna leeg */
-  label:has(input[type="radio"]:is(:checked, :hover, :focus)) input[type="radio"]:hover ~ input[type="radio"]::after {
+  
+  /* Empty stars after the hovered/focused/checked one */
+  .container:has(input[type="radio"]:is(:hover, :focus, :checked)) label:has(input[type="radio"]:is(:hover, :focus, :checked)) ~ label input[type="radio"]::after {
     background: var(--star-empty);
   }
 }
