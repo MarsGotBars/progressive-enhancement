@@ -16,6 +16,7 @@
       /* Hint: Denk niet te ingewikkeld */
     </style>
     <script type="module">
+	  if("URL" in window && URL.createObjectURL){
       const preview = document.querySelector("img");
       const fileUpload = document.querySelector("input[type='file']");
       fileUpload.addEventListener("change", (e) => {
@@ -28,6 +29,7 @@
           preview.classList.add("loaded");
         };
       });
+	}
 
       /* Schrijf hier eventueel je client-side JavaScript */
 
@@ -51,7 +53,7 @@
       <!-- Hint: Denk niet te ingewikkeld -->
       <label>
         <img src="" alt="upload preview" />
-        <input type="file" name="file-up" id="file-up" />
+        <input type="file" name="file-up" id="file-up" accept="image/*" />
       </label>
       <button type="submit" class="fdnd-button">Uploaden</button>
     </form>

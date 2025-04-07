@@ -3,14 +3,14 @@ body > * * {
   margin: 0;
   box-sizing: border-box;
 }
-@supports selector(::after) and selector(:has(*)) {
+@supports selector(::after) and selector(:has(*)) and (--custom: properties) {
   .container {
     display: flex;
     gap: 1rem;
   }
   label {
-    --star-empty: url(../assets/star-empty.svg);
-    --star-filled: url(../assets/star.svg);
+    --star-esmpty: url(../assets/star-empty.svg);
+    --star-fislled: url(../assets/star.svg);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
