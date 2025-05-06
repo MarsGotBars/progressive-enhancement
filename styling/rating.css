@@ -9,8 +9,8 @@ body > * * {
     gap: 1rem;
   }
   label {
-    --star-esmpty: url(../assets/star-empty.svg);
-    --star-fislled: url(../assets/star.svg);
+    --star-empty: url(../assets/star-empty.svg);
+    --star-filled: url(../assets/star.svg);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -37,14 +37,15 @@ body > * * {
     cursor: pointer;
   }
 
-  /* Fill stars on hover, focus, or check */
-  input[type="radio"]:is(:hover, :focus, :checked)::after,
-  .container:has(input[type="radio"]:is(:hover, :focus, :checked)) label:not(:has(input[type="radio"]:is(:hover, :focus, :checked)) ~ label) input[type="radio"]::after {
-    background: var(--star-filled);
-  }
+  
   
   /* Empty stars after the hovered/focused/checked one */
   .container:has(input[type="radio"]:is(:hover, :focus, :checked)) label:has(input[type="radio"]:is(:hover, :focus, :checked)) ~ label input[type="radio"]::after {
     background: var(--star-empty);
+  }
+  /* Fill stars on hover, focus, or check */
+  input[type="radio"]:is(:hover, :focus, :checked)::after,
+  .container:has(input[type="radio"]:is(:hover, :focus, :checked)) label:not(:has(input[type="radio"]:is(:hover, :focus, :checked)) ~ label) input[type="radio"]::after {
+    background: var(--star-filled);
   }
 }
